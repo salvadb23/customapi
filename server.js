@@ -20,12 +20,12 @@ app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(session({ secret: 'passport-tutorial', cookie: { maxAge: 60000 }, resave: false, saveUninitialized: false }));
 
-if(!isProduction) {
+if (!isProduction) {
   app.use(errorHandler());
 }
 
 //Configure Mongoose
-mongoose.connect('mongodb://localhost/passport-tutorial');
+mongoose.connect('mongodb://salvadb:Xbfjaput23@ds157544.mlab.com:57544/mern-podcast');
 mongoose.set('debug', true);
 
 require('./models/Users');
@@ -33,7 +33,7 @@ require('./config/passport');
 app.use(require('./controllers'));
 
 //Error handlers & middlewares
-if(!isProduction) {
+if (!isProduction) {
   app.use((err, req, res) => {
     res.status(err.status || 500);
 
