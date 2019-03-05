@@ -31,7 +31,7 @@ app.get('/', (req, res) => {
   res.send('You connected to me')
 })
 
-app.get('/users/api', (req, res) => {
+app.get('/api/users', (req, res) => {
   res.json({ "message": "hey" })
 })
 
