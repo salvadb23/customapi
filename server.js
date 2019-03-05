@@ -57,4 +57,8 @@ app.use((err, req, res) => {
   });
 });
 
+app.get('/', (req, res) => {
+  res.send('You connected to me')
+})
+
 app.listen(8000, () => console.log('Server running on http://localhost:8000/'));
