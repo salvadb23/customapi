@@ -25,7 +25,7 @@ if (!isProduction) {
 }
 
 //Configure Mongoose
-mongoose.connect('mongodb://salvadb:Xbfjaput23@ds157544.mlab.com:57544/mern-podcast');
+mongoose.connect('mongodb://test:testpassword1@ds157544.mlab.com:57544/mern-podcast');
 mongoose.set('debug', true);
 
 require('./models/Users');
