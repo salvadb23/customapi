@@ -9,7 +9,7 @@ require('dotenv').config();
 mongoose.promise = global.Promise;
 
 
-const PORT = process.env.PORT || 8000;
+const PORT = process.env.PORT || 5000;
 
 
 //Initiate our app
@@ -26,6 +26,7 @@ mongoose.connect(process.env.URL);
 mongoose.set('debug', true);
 
 require('./models/Users');
+require('./models/Hero');
 require('./config/passport');
 // app.use(require('./controllers'));
 app.use('/api', require('./controllers/api/index'));
