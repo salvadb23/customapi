@@ -3,12 +3,15 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const session = require('express-session');
 const mongoose = require('mongoose');
+require('dotenv').config();
 
 //Configure mongoose's promise to global promise
 mongoose.promise = global.Promise;
 
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8000;
+
+
 //Initiate our app
 const app = express();
 
@@ -19,7 +22,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(session({ secret: 'passport-tutorial', cookie: { maxAge: 60000 }, resave: false, saveUninitialized: false }));
 
 //Configure Mongoose
-mongoose.connect('mongodb://test:testpassword1@ds147073.mlab.com:47073/bew');
+mongoose.connect(process.env.URL);
 mongoose.set('debug', true);
 
 require('./models/Users');
