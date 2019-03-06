@@ -30,12 +30,4 @@ require('./config/passport');
 app.use(require('./controllers'));
 
 
-app.get('/', (req, res) => {
-  res.send('You connected to me')
-})
-
-app.get('/api/users', (req, res) => {
-  res.json({ "message": "hey" })
-})
-
 app.listen(PORT, () => console.log(`Server running on ${PORT}`));
