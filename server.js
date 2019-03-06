@@ -27,7 +27,9 @@ mongoose.set('debug', true);
 
 require('./models/Users');
 require('./config/passport');
-app.use(require('./controllers'));
+// app.use(require('./controllers'));
+app.use('/api', require('./controllers/api/index'));
+app.use('/api', require('./controllers/heroes/heroes'));
 
 
 app.listen(PORT, () => console.log(`Server running on ${PORT}`));

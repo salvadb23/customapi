@@ -84,8 +84,4 @@ router.get('/current', auth.required, (req, res, next) => {
 });
 
 
-router.get('/', (req, res) => {
-    res.json({ "message": "hey" })
-})
-
 module.exports = router;
