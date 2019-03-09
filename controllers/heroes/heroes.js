@@ -6,7 +6,7 @@ const isAuthenticated = require('../../config/middleware/isAuthenticated');
 
 
 // TODO: Was trying to associate heroes with users
-router.post('/heroes', (req, res, next) => {
+router.post('/heroes', auth.required, (req, res, next) => {
   const { body: { hero } } = req;
 
   const newHero = new Hero(hero);
@@ -16,7 +16,11 @@ router.post('/heroes', (req, res, next) => {
     .catch(err => res.json({ err }))
 });
 
-router.delete('/heroes/:id', (req, res) => {
+router.get('/heroes', auth.required, (req, res, ) => {
+  console.log('hero')
+})
+
+router.delete('/heroes/:id', auth.required, (req, res) => {
   const { id } = req.params;
   Hero.findByIdAndDelete(id).then(() => {
     res.send('Deleted hero!')
@@ -25,7 +29,7 @@ router.delete('/heroes/:id', (req, res) => {
   })
 })
 
-router.put('/heroes/:id', (req, res) => {
+router.put('/heroes/:id', auth.required, (req, res) => {
   const { id } = req.params;
   const { name, ability, role } = req.body;
 
@@ -42,7 +46,7 @@ router.put('/heroes/:id', (req, res) => {
     })
 });
 
-router.get('/heroes/:id', (req, res) => {
+router.get('/heroes/:id', auth.required, (req, res) => {
   const { id } = req.params;
 
   Hero.findById(id).then((hero) => {
@@ -50,7 +54,7 @@ router.get('/heroes/:id', (req, res) => {
   })
 })
 
-router.get('/heroes', (req, res) => {
+router.get('/heroes', auth.required, (req, res) => {
   Hero.find().then((heroes) => {
     res.json({ heroes });
   })
